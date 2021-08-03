@@ -1,0 +1,53 @@
+*{padding: 0; margin: 0; border: 0;}
+
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+html{scroll-behavior: smooth; overflow-x: hidden;}
+input,button,textarea{font-family: inherit; font-size: inherit; color: inherit; background: none;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer; background: none;}
+button::-moz-focus-inner {padding: 0; border: 0;}
+a, a:hover, a:visited{text-decoration: none;}
+ul, menu{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight: 400;}
+
+body{
+	background: var(--main-white);
+	color: var(--main-black);
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* Стили контейнеров */
+.container{width: 100%; max-width: 1276px; margin: 0 auto; padding: 0;}
+
+/* Переменные */
+:root{
+	--main-white: #FFFFFF;
+	--main-black: #303E3D;
+	--main-purple: #8E4575;
+	--main-blue: #6563CC;
+	--main-dark-purple: #43333E;
+	--main-grey: #919294;
+	--main-bg-grey: #F7F8FC;
+	--main-border-grey: #E4E4E4;
+	--main-shadow-black: rgba(0, 0, 0, 0.1);
+}
