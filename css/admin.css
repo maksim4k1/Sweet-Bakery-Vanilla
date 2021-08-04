@@ -222,6 +222,7 @@
 .modal__input {
     min-height: 30px;
     padding: 0 10px;
+    background: var(--main-white);
     border: 1px solid var(--main-border-grey);
 }
 .modal__label {
@@ -242,6 +243,7 @@
     top: 0;
     right: -35px;
     border: 1px solid var(--main-border-grey);
+    background: var(--main-white);
 }
 .modal__label::after{
     opacity: 0;
