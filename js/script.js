@@ -1,3 +1,5 @@
+const URL = "http://localhost:1717";
+
 // Open / Close menu and basket
 const openMenuButton = document.querySelector(".header__burger-button");
 const closeMenuButton = document.querySelector(".header__burger-close-button");
@@ -26,36 +28,98 @@ closeBusketButton.addEventListener("click", () => {
     toggleClass(headerBasket, "open-basket");
 });
 
-function toggleClass(block, className){
-    block.classList.toggle(className);
+// Render pastryes list
+const sweetsList = document.querySelector(".sweets__list");
+
+async function renderSweets(){
+    const data = getPastry();
+
+    await data.then(data => data.forEach(element => {
+        const item = createElement("li", "sweets__item");
+        const image = createElement("img", "sweets__image");
+        const info = createElement("div", "sweets__info");
+        const name = createElement("div", "sweets__name", element.name);
+        const ingredients = createElement("div", "sweets__ingredients", element.ingredients.join(", "));
+        const price = createElement("div", "sweets__price", `$${element.cost}`);
+        const button = createElement("button", "sweets__button", "Add to cart");
+
+        item.setAttribute("id", element.id);
+        image.setAttribute("src", element.image);
+        if(element.inStock === 0){
+            button.classList.add("sweets__button_disabled");
+            button.setAttribute("disabled", "");
+            button.textContent = "Not avaliable";
+        }
+
+        info.append(name, ingredients, price);
+        item.append(image, info, button);
+
+        sweetsList.append(item);
+    }));
+
+    setEventListeners();
+}
+
+function updateSweet(id){
+    getPastry().then(data => data.forEach(element => {
+        if(element.id === id && element.inStock <= 1){
+            const item = document.getElementById(id);
+            const button = item.childNodes[2]
+            button.classList.add("sweets__button_disabled");
+            button.setAttribute("disabled", "");
+            button.textContent = "Not avaliable";
+        }
+    }));
 }
 
 // Basket
-const sweetsButtons = document.querySelectorAll(".sweets__button");
 const basketItems = [];
 
-sweetsButtons.forEach(item => {
-    item.addEventListener("click", () => {
-        const basketCount = document.querySelector(".header__basket-count");
-        basketCount.textContent = Number(basketCount.textContent) + 1;
+function setEventListeners(){
+    const sweetsButtons = document.querySelectorAll(".sweets__button");
 
-        const sweetItem = item.parentNode;
-        const sweetName = sweetItem.childNodes[3].childNodes[1].textContent;
-        const sweetPrice = sweetItem.childNodes[3].childNodes[5].textContent;
-        const basketItem = basketItems.find(item => item.name === sweetName);
+    sweetsButtons.forEach(item => {
+        item.addEventListener("click", async () => {
+            const basketCount = document.querySelector(".header__basket-count");
+            basketCount.textContent = Number(basketCount.textContent) + 1;
 
-        if(basketItem === undefined){
-            basketItems.push({
-                name: sweetName,
-                count: 1,
-                price: sweetPrice
+            const sweetItem = item.parentNode;
+            const sweetName = sweetItem.childNodes[1].childNodes[0].textContent;
+            const sweetPrice = sweetItem.childNodes[1].childNodes[2].textContent;
+            const basketItem = basketItems.find(item => item.name === sweetName);
+
+            if(basketItem === undefined){
+                basketItems.push({
+                    name: sweetName,
+                    count: 1,
+                    price: sweetPrice
+                });
+            } else{
+                basketItem.count++;
+            }
+
+            renderBasket();
+            updateSweet(sweetItem.getAttribute("id"));
+
+            let inStock = 0;
+            let body;
+            await getPastry().then(data => {
+                inStock = (data.find(item => item.id === sweetItem.getAttribute("id")).inStock) - 1;
+                body = {"inStock": inStock};
             });
-        } else{
-            basketItem.count++;
-        }
-        renderBasket();
+
+            console.log(inStock)
+
+            fetch(`${URL}/pastry/update/${sweetItem.getAttribute("id")}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body)
+            });
+        });
     });
-});
+}
 
 const basketList = document.querySelector(".header__list");
 
@@ -90,6 +154,11 @@ function renderBasket(){
     basketList.append(line, total);
 }
 
+// Functions
+function toggleClass(block, className){
+    block.classList.toggle(className);
+}
+
 function createElement(tag="div", className="", text=""){
     const block = document.createElement(tag);
     block.className = className;
@@ -97,3 +166,13 @@ function createElement(tag="div", className="", text=""){
 
     return block;
 }
+
+async function getPastry(){
+    const response = await fetch(`${URL}/pastry`);
+    const data = response.json();
+
+    return data;
+}
+
+// Activate functions
+renderSweets();
