@@ -211,3 +211,36 @@
         background: var(--main-grey);
     }
 }
+/* Footer */
+.footer {
+    padding: 39px 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    color: var(--main-white);
+    font-size: 18px;
+    background: var(--main-dark-purple);
+}
+.footer__title {
+    font-size: 28px;
+}
+.footer__phone-number {
+    margin: 21px 0 20px;
+    color: var(--main-white);
+}
+@media (hover){
+    .footer__phone-number{
+        transition: color 0.3s;
+    }
+    .footer__phone-number:hover{
+        color: var(--main-grey);
+    }
+}
+.footer__address {
+    font-style: normal;
+}
+.footer__license {
+    margin: 39px 0 0;
+    color: var(--main-grey);
+    font-size: 16px;
+}
