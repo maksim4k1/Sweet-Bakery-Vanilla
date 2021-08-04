@@ -108,8 +108,6 @@ function setEventListeners(){
                 body = {"inStock": inStock};
             });
 
-            console.log(inStock)
-
             fetch(`${URL}/pastry/update/${sweetItem.getAttribute("id")}`, {
                 method: "PUT",
                 headers: {
