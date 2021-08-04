@@ -1,10 +1,9 @@
 const URL = "http://localhost:1717";
 
 // Open / Close menu
+const headerMenu = document.querySelector(".header__navigation");
 const openMenuButton = document.querySelector(".header__burger-button");
 const closeMenuButton = document.querySelector(".header__burger-close-button");
-
-const headerMenu = document.querySelector(".header__navigation");
 
 openMenuButton.addEventListener("click", () => {
     toggleClass(headerMenu, "open-menu");
@@ -47,7 +46,7 @@ function renderItem(){
     })).then(() => addEventListeners());
 }
 
-// Edit items
+// Edit/delete items
 function addEventListeners(){
     // Edit count
     const addButtons = document.querySelectorAll(".add-sweets__button");
@@ -144,6 +143,31 @@ function addEventListeners(){
     })
 }
 
+// Add item
+function addItem(){
+    
+}
+// Open / Close modal
+const addItemModal = document.querySelector(".modal");
+const addItemModalForm = document.querySelector(".modal__form");
+const addItemButton = document.querySelector(".add-sweet__button");
+
+addItemModal.addEventListener("click", (event) => {
+    if(event.target === event.currentTarget){
+        toggleClass(addItemModal, "open-modal");
+        toggleClass(document.body, "body-overflow");
+    }
+});
+addItemModalForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    toggleClass(addItemModal, "open-modal");
+    toggleClass(document.body, "body-overflow");
+})
+addItemButton.addEventListener("click", () => {
+    toggleClass(addItemModal, "open-modal");
+    toggleClass(document.body, "body-overflow");
+});
+
 // Functions
 function toggleClass(block, className){
     block.classList.toggle(className);
@@ -178,6 +202,10 @@ function deleteData(id){
     fetch(`${URL}/pastry/delete/${id}`, {
         method: "DELETE"
     }).then(() => renderItem());
+}
+
+function createData(data){
+
 }
 
 // Activate functions

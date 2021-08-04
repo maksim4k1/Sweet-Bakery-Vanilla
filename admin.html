@@ -46,41 +46,26 @@
         <section class="edit-sweets">
             <div class="edit-sweets__container container">
                 <h1 class="edit-sweets__title">Avaliable sweets</h1>
-                <ul class="edit-sweets__list">
-                    <li class="edit-sweets__item">
-                        <div class="edit-sweets__content edit-sweets__name">
-                            <div class="edit-sweets__name-value edit-sweets__value">Rainbow donuts</div>
-                            <button class="edit-sweets__button edit-sweets-name__button">
-                                <img src="img/svg/edit.svg" alt="edit">
-                            </button>
-                        </div>
-                        <div class="edit-sweets__content edit-sweets__price">
-                            <div class="edit-sweets__text">price:</div>
-                            <div class="edit-sweets__price-value edit-sweets__value">$   10.99</div>
-                            <button class="edit-sweets__button edit-sweets-price__button">
-                                <img src="img/svg/edit.svg" alt="edit">
-                            </button>
-                        </div>
-                        <div class="edit-sweets__content edit-sweets__inStock">
-                            <div class="edit-sweets__text">in stock:</div>
-                            <div class="edit-sweets__buttons">
-                                <button class="edit-sweets__button add-sweets__button">
-                                    <img src="img/svg/plus.svg" alt="add">
-                                </button>
-                                <div class="edit-sweets__inStock-value edit-sweets__value">4</div>
-                                <button class="edit-sweets__button remove-sweets__button">
-                                    <img src="img/svg/minus.svg" alt="remove">
-                                </button>
-                            </div>
-                        </div>
-                        <button class="edit-sweets__button delete-sweets__button">
-                            <img src="img/svg/delete.svg" alt="delete">
-                        </button>
-                    </li>
-                </ul>
+                <ul class="edit-sweets__list"></ul>
                 <button class="add-sweet__button">Add new shop item</button>
             </div>
         </section>
+        <div class="modal">
+            <form class="modal__form">
+                <h4 class="modal__title">Create new item in shop</h4>
+                <input type="text" class="modal__input" placeholder="Name" id="name">
+                <input type="text" class="modal__input" placeholder="Image url" id="image">
+                <input type="text" class="modal__input" placeholder="Ingredients" id="ingredients">
+                <input type="text" class="modal__input" placeholder="In stock" id="inStock">
+                <input type="text" class="modal__input" placeholder="Cost" id="cost">
+                <input type="checkbox" id="isHasDelivery" class="modal__checkbox">
+                <label for="isHasDelivery" class="modal__label">Has delivery?</label>
+                <div class="modal__text">Address</div>
+                <input type="text" class="modal__input" placeholder="Street" id="street">
+                <input type="text" class="modal__input" placeholder="House number" id="houseNumber">
+                <button type="submit" class="modal__button">Create item</button>
+            </form>
+        </div>
     </main>
     <!----------------------------------------------E N D   C O N T E N T--------------------------------------------->
 </body>
