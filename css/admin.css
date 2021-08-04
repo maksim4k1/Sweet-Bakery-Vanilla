@@ -133,6 +133,15 @@
 .edit-sweets__name{
     width: 45%;
 }
+.edit-sweets__input{
+    width: 202px;
+    height: 30px;
+    padding: 0 9px;
+    border: 1px solid var(--main-purple);
+}
+.edit-sweets__price-input{
+    width: 70px;
+}
 .edit-sweets__value{
     font-size: 18px;
 }
