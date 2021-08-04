@@ -17,10 +17,57 @@
     <link rel="shortcut icon" href="img/svg/SweetBakery.svg" type="image/x-icon">
 </head>
 <body>
+    <header class="header">
+        <div class="header__container container">
+            <div class="header__menu">
+                <button class="header__burger-button">
+                    <img src="img/svg/burger.svg" alt="Navigation" class="header__icon header__burger-icon">
+                </button>
+                <nav class="header__navigation">
+                    <button class="header__burger-close-button">
+                        <img src="img/svg/close.svg" alt="Close" class="header__icon header__close-icon header__close-menu">
+                    </button>
+                    <div class="header__info">
+                        <h4 class="header__title">Contact us</h4>
+                        <a href="tel:+11478344778999" class="header__phone-number">+11 4783 4477 8999</a>
+                        <p class="header__text">Our delivery<br/>working from 09:00<br/>to 23:00</p>
+                    </div>
+                    <a href="admin.html" class="header__link">Go to admin page</a>
+                </nav>
+            </div>
+            <div class="header__logo">
+                <img src="img/svg/SweetBakery.svg" alt="Sweet Bakery">
+            </div>
+            <div class="header__basket">
+                <button class="header__basket-button">
+                    <img src="img/svg/basket.svg" alt="Basket" class="header__icon header__basket-icon">
+                    <div class="header__basket-count">0</div>
+                </button>
+                <div class="header__content">
+                    <button class="header__basket-close-button">
+                        <img src="img/svg/close-white.svg" alt="Close" class="header__icon header__close-icon header__close-basket">
+                    </button>
+                    <div class="header__clear-busket">Cart is empty</div>
+                    <ul class="header__list"></ul>
+                </div>
+            </div>
+        </div>
+    </header>
     <!----------------------------------------------S T A R T   C O N T E N T-------------------------------------------->
     <main class="content">
-        
+        <section class="sweets">
+            <div class="sweets__container container">
+                <h1 class="sweets__title">Avaliable sweets</h1>
+                <ul class="sweets__list"></ul>
+            </div>
+        </section>
     </main>
     <!----------------------------------------------E N D   C O N T E N T--------------------------------------------->
+    <footer class="footer">
+        <h2 class="footer__title">SWEET BAKERY inc</h2>
+        <a href="tel:+11478344778999" class="footer__phone-number">+11 4783 4477 8999</a>
+        <address class="footer__address">UK Privet Drive 4, 226 788-11</address>
+        <div class="footer__license">© Sweet Bakery 2021</div>
+    </footer>
 </body>
 </html>

@@ -35,6 +35,9 @@ body{
 	color: var(--main-black);
 	font-family: 'Ubuntu', sans-serif;
 }
+.body-overflow{
+	overflow: hidden;
+}
 
 /* Стили контейнеров */
 .container{width: 100%; max-width: 1276px; margin: 0 auto; padding: 0;}
@@ -49,5 +52,7 @@ body{
 	--main-grey: #919294;
 	--main-bg-grey: #F7F8FC;
 	--main-border-grey: #E4E4E4;
+	--main-red: #FF0000;
 	--main-shadow-black: rgba(0, 0, 0, 0.1);
+	--main-dark-bg: rgba(0, 0, 0, 0.5);
 }
