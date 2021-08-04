@@ -1,0 +1,107 @@
+/* Header */
+.header {
+    width: 100%;
+    height: 101px;
+    background: var(--main-purple);
+    z-index: 50;
+}
+.header__container{
+    height: 100%;
+    padding: 0 51px 0 73px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* header__menu */
+.header__burger-button{
+    margin: 0 50px 0 0;
+}
+.header__navigation, .header__content {
+    max-width: 316px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 0 73px;
+    display: flex;
+    flex-flow: column;
+    position: fixed;
+    top: 0;
+    overflow-y: auto;
+    z-index: 75;
+    transition: transform 0.5s;
+}
+.header__navigation{
+    font-size: 18px;
+    align-items: center;
+    left: 0;
+    background: var(--main-white);
+    box-shadow: 4px 4px 10px var(--main-shadow-black);
+    transform: translateX(-100%);
+}
+.open-menu{
+    transform: translateX(0);
+}
+.header__burger-close-button {
+    margin: 29px 29px 60px auto;
+}
+@media (hover){
+    .header__close-icon{
+        transition: transform 0.5s;
+    }
+    .header__close-icon:hover {
+        transform: rotate(180deg);
+    }
+}
+.header__info {
+    width: 192px;
+    margin: 0 0 auto;
+}
+.header__title {
+    margin: 0 0 18px;
+}
+.header__phone-number {
+    margin: 0 0 76px;
+    display: block;
+    color: var(--main-black);
+    font-weight: 700;
+}
+@media (hover){
+    .header__phone-number{
+        transition: color 0.3s;
+    }
+    .header__phone-number:hover {
+        color: var(--main-grey);
+    }
+}
+.header__link {
+    color: var(--main-blue);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+.header__admin{
+    color: var(--main-white);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Media */
+@media (max-width: 610px){
+    /* Header */
+    .header {
+        height: 72px;
+    }
+    .header__container{
+        height: 100%;
+        padding: 0 16px 0 18px;
+    }
+    .header__logo>img{
+        height: 42px;
+    }
+    .header__burger-button{
+        margin: 0 16px 0 0;
+    }
+    .header__admin{
+        width: 40px;
+        font-size: 14px;
+    }
+}
