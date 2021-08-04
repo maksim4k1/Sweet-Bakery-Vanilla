@@ -111,7 +111,7 @@ function addEventListeners(){
             if(priceValueBlock.childNodes[0].className === "edit-sweets__input edit-sweets__price-input"){
                 let priceValue = priceValueBlock.childNodes[0].value;
 
-                if(Number.isNaN(Number(priceValue)) === true){
+                if(Number.isNaN(Number(priceValue)) === true || Number(priceValue) === 0){
                     priceValueBlock.innerHTML = `$   0.01`;
                 } else{
                     priceValueBlock.innerHTML = `$   ${priceValue}`;
@@ -128,6 +128,20 @@ function addEventListeners(){
             }
         });
     });
+
+    // Delete item
+    const deleteButtons = document.querySelectorAll(".delete-sweets__button");
+
+    deleteButtons.forEach(element => {
+        element.addEventListener("click", () => {
+            const id = element.parentNode.getAttribute("id");
+
+            const isDelete = confirm("\nВы уверены что хотите удалить этот элемент из списка товаров?\nЕсли вы удалите этот товар то больше не сможете его восстановить!");
+            if(isDelete === true){
+                deleteData(id);
+            }
+        });
+    })
 }
 
 // Functions
@@ -158,6 +172,12 @@ function updateData(data, id){
         },
         body: JSON.stringify(data)
     });
+}
+
+function deleteData(id){
+    fetch(`${URL}/pastry/delete/${id}`, {
+        method: "DELETE"
+    }).then(() => renderItem());
 }
 
 // Activate functions
