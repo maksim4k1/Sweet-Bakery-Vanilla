@@ -2,12 +2,15 @@
 .header {
     width: 100%;
     height: 101px;
+    background: var(--main-purple);
+    z-index: 50;
+}
+.header__container{
+    height: 100%;
     padding: 0 40px 0 73px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--main-purple);
-    z-index: 50;
 }
 /* header__menu */
 .header__navigation, .header__content {
