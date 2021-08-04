@@ -156,6 +156,7 @@
 .sweets__list {
     display: flex;
     flex-flow: wrap;
+    justify-content: center;
     row-gap: 26px;
     column-gap: 28px;
 }
