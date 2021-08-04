@@ -133,6 +133,9 @@
 .edit-sweets__name{
     width: 45%;
 }
+.edit-sweets__value{
+    font-size: 18px;
+}
 .edit-sweets__name-value{
     margin: 0 20px 0 0;
 }
@@ -143,6 +146,7 @@
     margin: 0 18px 0 0;
 }
 .edit-sweets__text {
+    font-size: 14px;
     margin: 0 16px 0 0;
 }
 .edit-sweets__buttons{
