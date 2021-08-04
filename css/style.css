@@ -191,7 +191,7 @@
 .sweets__button {
     width: 100%;
     height: 30px;
-    margin: 20px 0 0;
+    margin: 49px 0 0;
     color: var(--main-white);
     font-size: 14px;
     font-weight: 700;
@@ -243,4 +243,44 @@
     margin: 39px 0 0;
     color: var(--main-grey);
     font-size: 16px;
+}
+
+/* Media */
+@media (max-width: 610px){
+    /* Header */
+    .header {
+        height: 72px;
+    }
+    .header__container{
+        height: 100%;
+        padding: 0 16px 0 18px;
+    }
+    .header__logo>img{
+        height: 42px;
+    }
+    /* Sweets */
+    .sweets{
+        margin: 59px 0 77px;
+    }
+    .sweets__list{
+        gap: 32px;
+    }
+    .sweets__item{
+        max-width: 325px;
+    }
+    .sweets__image{
+        height: 290px;
+    }
+    .sweets__info{
+        margin: 15px 0 0;
+    }
+    .sweets__name {
+        margin: 0 0 13px;
+    }
+    .sweets__ingredients {
+        margin: 0 0 17px;
+    }
+    .sweets__button {
+        margin: 33px 0 0;
+    }
 }
