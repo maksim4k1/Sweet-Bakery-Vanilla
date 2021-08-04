@@ -260,6 +260,11 @@
 .modal__text {
     margin: 0 0 -4px;
 }
+.modal__error{
+    color: var(--main-red);
+    font-size: 14px;
+    text-align: center;
+}
 .modal__button {
     width: 200px;
     height: 40px;

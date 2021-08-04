@@ -145,7 +145,50 @@ function addEventListeners(){
 
 // Add item
 function addItem(){
-    
+    const nameValue = document.getElementById("name").value;
+    const imageValue = document.getElementById("image").value;
+    const ingredientsValue = document.getElementById("ingredients").value;
+    const inStockValue = document.getElementById("inStock").value;
+    const costValue = document.getElementById("cost").value;
+    const isHasDeliveryValue = document.getElementById("isHasDelivery").checked;
+    const streetValue = document.getElementById("street").value;
+    const houseNumberValue = document.getElementById("houseNumber").value;
+    const error = document.querySelector(".modal__error");
+
+    if(
+        nameValue === "" ||
+        imageValue === "" ||
+        ingredientsValue === "" ||
+        inStockValue === "" ||
+        costValue === "" ||
+        isHasDeliveryValue === "" ||
+        streetValue === "" ||
+        houseNumberValue === ""
+    ){
+        error.innerHTML = "Заполните все поля";
+    } else if(Number.isNaN(Number(inStockValue)) || Number.isNaN(Number(costValue)) || Number.isNaN(Number(houseNumberValue))){
+        error.innerHTML = "Введите корректные данные для полей 'in stock', 'cost' и 'house number'";
+    } else if(ingredientsValue.split(", ").length <= 1){
+        error.innerHTML = "Введите ингредиенты через запятую ( яйца, мука, молоко )";
+    } else{
+        error.innerHTML = "";
+
+        createData({
+            name: nameValue,
+            image: imageValue,
+            ingredients: ingredientsValue.split(", "),
+            inStock: Number(inStockValue),
+            cost: Number(costValue),
+            hasDelivery: isHasDeliveryValue,
+            address: {
+                street: streetValue,
+                houseNumber: Number(houseNumberValue)
+            }
+        });
+
+        toggleClass(addItemModal, "open-modal");
+        toggleClass(document.body, "body-overflow");
+    }
 }
 // Open / Close modal
 const addItemModal = document.querySelector(".modal");
@@ -160,8 +203,7 @@ addItemModal.addEventListener("click", (event) => {
 });
 addItemModalForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    toggleClass(addItemModal, "open-modal");
-    toggleClass(document.body, "body-overflow");
+    addItem();
 })
 addItemButton.addEventListener("click", () => {
     toggleClass(addItemModal, "open-modal");
@@ -205,7 +247,13 @@ function deleteData(id){
 }
 
 function createData(data){
-
+    fetch(`${URL}/pastry/create`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).then(() => renderItem());
 }
 
 // Activate functions
