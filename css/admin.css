@@ -87,6 +87,7 @@
 /* Edit sweets */
 .edit-sweets {
     margin: 76px 0 0;
+    padding: 0 0 50px;
 }
 .edit-sweets__container {
     max-width: 875px;
@@ -116,6 +117,14 @@
     color: var(--main-white);
     font-size: 20px;
     background: var(--main-purple);
+}
+@media (hover){
+    .add-sweet__button{
+        transition: background 0.3s;
+    }
+    .add-sweet__button:hover{
+        background: var(--main-dark-purple);
+    }
 }
 /* edit-sweets__item */
 .edit-sweets__item {
